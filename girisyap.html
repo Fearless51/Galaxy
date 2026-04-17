@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>Giriş Yap - Galaxy</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <form class="galaxy-form">
+        <h2>Giriş Yap</h2>
+        <input type="text" id="l_ad" placeholder="Kullanıcı Adı">
+        <input type="password" id="l_sifre" placeholder="Şifre">
+        <input type="button" value="Galaksiye Bağlan" onclick="girisYap()">
+        <p>Hesabın yok mu? <a href="index.html">Kayıt Ol</a></p>
+    </form>
+
+    <script>
+        function girisYap() {
+            const ad = document.getElementById('l_ad').value.trim();
+            const sifre = document.getElementById('l_sifre').value.trim();
+
+            if (ad === "" || sifre === "") {
+                alert("Kral, buralar boş geçilmez! İsim ve şifre şart.");
+            } else {
+                alert("Hoş geldin " + ad + "! Galaksiye ışınlanıyorsun...");
+                window.location.href = "anasayfa.html";
+            }
+        }
+    </script>
+</body>
+</html>

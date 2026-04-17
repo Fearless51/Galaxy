@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>The Galaxy: Escape - V2.5</title>
+    <style>
+        body { margin: 0; background: #000; overflow: hidden; color: white; font-family: sans-serif; text-align: center; touch-action: manipulation; }
+        canvas { border: 3px solid #b660c5; display: block; margin: 10px auto; background: #050505; box-shadow: 0 0 20px #b660c5; max-width: 95vw; max-height: 70vh; }
+        .score-container { font-size: 24px; color: #00ffcc; margin-top: 10px; text-shadow: 0 0 10px #00ffcc; }
+        .controls { display: flex; justify-content: space-around; width: 100%; position: fixed; bottom: 30px; }
+        .btn { 
+            width: 75px; height: 75px; background: rgba(182, 96, 197, 0.2); 
+            border: 2px solid #b660c5; border-radius: 50%; color: white; 
+            font-size: 30px; display: flex; align-items: center; justify-content: center;
+            user-select: none; -webkit-tap-highlight-color: transparent;
+            cursor: pointer; /* Mouse ile üzerine gelince el işareti çıkar */
+        }
+        .btn:active { background: rgba(182, 96, 197, 0.6); transform: scale(0.9); }
+    </style>
+</head>
+<body>
+
+    <div class="score-container">SKOR: <span id="skorTablosu">0</span></div>
+    <canvas id="gameCanvas" width="400" height="500"></canvas>
+
+    <div class="controls">
+        <div class="btn" id="solBtn">◀</div>
+        <div class="btn" id="sagBtn">▶</div>
+    </div>
+
+    <script>
+        const canvas = document.getElementById("gameCanvas");
+        const ctx = canvas.getContext("2d");
+
+        let gemi = { x: 180, y: 440, w: 40, h: 40, hiz: 8 };
+        let taslar = [];
+        let skor = 0;
+        let oyunBitti = false;
+        let tuslar = {};
+
+        // Klavye Kontrolleri
+        window.onkeydown = (e) => tuslar[e.key] = true;
+        window.onkeyup = (e) => tuslar[e.key] = false;
+
+        // --- HEM MOBİL HEM MOUSE KONTROL MERKEZİ ---
+        const solBtn = document.getElementById("solBtn");
+        const sagBtn = document.getElementById("sagBtn");
+
+        // SOL BUTON (Dokunma ve Mouse)
+        const solaBas = (e) => { if(e) e.preventDefault(); tuslar["ArrowLeft"] = true; };
+        const solaBirak = () => tuslar["ArrowLeft"] = false;
+
+        solBtn.addEventListener("touchstart", solaBas);
+        solBtn.addEventListener("mousedown", solaBas);
+        solBtn.addEventListener("touchend", solaBirak);
+        solBtn.addEventListener("mouseup", solaBirak);
+        solBtn.addEventListener("mouseleave", solaBirak);
+
+        // SAĞ BUTON (Dokunma ve Mouse)
+        const sagaBas = (e) => { if(e) e.preventDefault(); tuslar["ArrowRight"] = true; };
+        const sagaBirak = () => tuslar["ArrowRight"] = false;
+
+        sagBtn.addEventListener("touchstart", sagaBas);
+        sagBtn.addEventListener("mousedown", sagaBas);
+        sagBtn.addEventListener("touchend", sagaBirak);
+        sagBtn.addEventListener("mouseup", sagaBirak);
+        sagBtn.addEventListener("mouseleave", sagaBirak);
+
+        function tasOlustur() {
+            if (Math.random() < 0.04) {
+                taslar.push({ 
+                    x: Math.random() * (canvas.width - 30), 
+                    y: -30, w: 30, h: 30, 
+                    hiz: 1.5 + Math.random() * 2 
+                });
+            }
+        }
+
+        function guncelle() {
+            if (oyunBitti) return;
+            if ((tuslar["ArrowLeft"] || tuslar["a"] || tuslar["A"]) && gemi.x > 0) gemi.x -= gemi.hiz;
+            if ((tuslar["ArrowRight"] || tuslar["d"] || tuslar["D"]) && gemi.x < canvas.width - gemi.w) gemi.x += gemi.hiz;
+
+            for (let i = 0; i < taslar.length; i++) {
+                taslar[i].y += taslar[i].hiz;
+                if (gemi.x < taslar[i].x + taslar[i].w && gemi.x + gemi.w > taslar[i].x &&
+                    gemi.y < taslar[i].y + taslar[i].h) {
+                    oyunBitti = true;
+                    alert("OYUN BİTTİ KRAL! Skorun: " + skor);
+                    location.reload(); 
+                }
+                if (taslar[i].y > canvas.height) {
+                    taslar.splice(i, 1);
+                    skor++;
+                    document.getElementById("skorTablosu").innerText = skor;
+                }
+            }
+            tasOlustur();
+        }
+
+        function ciz() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.shadowBlur = 15; ctx.shadowColor = "#b660c5";
+            ctx.fillStyle = "#b660c5";
+            ctx.fillRect(gemi.x, gemi.y, gemi.w, gemi.h);
+            ctx.shadowBlur = 10; ctx.shadowColor = "#ff4d4d";
+            ctx.fillStyle = "#ff4d4d";
+            for (let t of taslar) { ctx.fillRect(t.x, t.y, t.w, t.h); }
+            requestAnimationFrame(() => { guncelle(); ciz(); });
+        }
+        ciz();
+    </script>
+</body>
+</html>

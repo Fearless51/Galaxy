@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>GALAXY | Evreni Keşfet</title>
+    <link rel="stylesheet" href="galaxy.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="logo">GALAXY</div>
+        <ul class="nav-links">
+            <li><a href="oyunlar.html">Oyunlar</a></li>
+            <li><a href="kesfet.html">Keşfet</a></li>
+            <li><a href="girisyap.html">Çıkış Yap</a></li>
+            <li><a href="haberler.html">Haberler</a></li>
+        </ul>
+    </nav>
+
+    <header class="hero">
+        <h1>SONSUZLUĞA ADIM AT</h1>
+        <p>GALAXY sitesine hoş geldin</p>
+        <button class="cta-btn" onclick="KesfeBasla()">Keşfe Başla</button>
+    </header>
+
+    <section class="cards-container">
+        <div class="card">
+            <h3>Nebula</h3>
+            <p>Yıldız tozlarının eşsiz dansı.</p>
+        </div>
+        <div class="card">
+            <h3>Andromeda</h3>
+            <p>Bize en yakın komşu galaksi.</p>
+        </div>
+        <div class="card">
+            <h3>Samanyolu</h3>
+            <p>İçinde kaybolduğumuz evimiz.</p>
+        </div>
+    </section>
+
+</body>
+<script>
+    function KesfeBasla() {
+        alert("Keşfe başlıyoruz! Evrenin sırlarını keşfetmeye hazır olun!");
+        window.location.assign("kesfet.html");
+    }
+</script>
+</html>

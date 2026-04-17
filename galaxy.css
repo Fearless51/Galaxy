@@ -1,0 +1,300 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #2b1b31;
+    color: #ffffff;
+    line-height: 1.6;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 8%;
+    background: rgba(0,0,0,0.5);
+    border-bottom: 1px solid rgba(182, 96, 197, 0.2);
+}
+.logo {
+    font-size: 32px;
+    font-weight: bold;
+    color: #b660c5;
+    letter-spacing: 3px;
+    text-shadow: 0 0 15px #b660c5;
+
+}
+.nav-links {
+    display: flex;
+    list-style: none;
+}
+.nav-links li {
+    margin-left: 35px;
+}
+.nav-links a {
+    color: #ffffff; /* Menü yazılarını parlak beyaz yaptık! */
+    text-decoration: none; /* Alt çizgiyi kaldırdık */
+    font-size: 18px;
+    font-weight: 500;
+    transition: 0.3s;
+}
+.nav-links a:hover {
+    color: #b660c5;
+}
+/* 3. Hero Bölümü (Sonsuzluğa Adım At) - Kutu Kaldırıldı */
+.hero {
+    height: 60vh; /* Yükseklik */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    /* Koyu kutuyu kaldırdık, direkt arka plana geçiş verdik */
+    background: linear-gradient(to bottom, transparent, #410442); 
+    padding: 0 20px;
+}
+
+.hero h1 {
+    font-size: 70px; /* Dev gibi başlık */
+    color: #ffffff; /* Başlık parlak beyaz */
+    text-transform: uppercase; /* Tümünü büyük harf yap */
+    letter-spacing: 8px; /* Harf arasını aç */
+    margin-bottom: 25px;
+    text-shadow: 0 0 20px rgba(182, 96, 197, 0.8); /* Başlığa parlama efekti */
+}
+
+.hero p {
+    font-size: 20px;
+    color: rgba(255, 255, 255, 0.8); /* Alt yazı hafif sönük beyaz */
+    max-width: 600px;
+    margin-bottom: 30px;
+}
+
+/* 4. Buton (Keşfe Başla) - Tamamen Yenilendi */
+.cta-btn {
+    background-color: #b660c5; /* Parlak mor arka plan */
+    color: #ffffff; /* Beyaz yazı */
+    border: none; /* Kenarlık yok */
+    padding: 18px 45px; /* Büyük ve şık */
+    font-size: 20px;
+    font-weight: bold;
+    border-radius: 50px; /* Tam yuvarlak köşeler */
+    cursor: pointer;
+    transition: 0.3s ease-in-out; /* Yumuşak geçiş */
+    box-shadow: 0 6px 20px rgba(182, 96, 197, 0.4); /* Hafif gölge */
+    margin-top: 15px;
+}
+
+.cta-btn:hover {
+    background-color: #d182df; /* Üstüne gelince daha parlak lila */
+    transform: translateY(-4px) scale(1.05); /* Yukarı zıpla ve büyü */
+    box-shadow: 0 10px 30px rgba(182, 96, 197, 0.7); /* Güçlü parlama */
+}
+
+/* 5. Kartlar - Sağdaki Kutular */
+.cards-container {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    padding: 50px 8%;
+    flex-wrap: wrap; /* Mobilde alt alta geçsin */
+}
+
+.card {
+    background: rgba(142, 29, 138, 0.2); /* Saydam koyu mor */
+    border: 1px solid rgba(182, 96, 197, 0.3);
+    padding: 35px;
+    border-radius: 20px; /* Yumuşak köşeler */
+    width: 320px;
+    text-align: center;
+    transition: 0.3s ease;
+}
+
+.card:hover {
+    background: rgba(182, 96, 197, 0.3); /* Üstüne gelince aydınlan */
+    transform: translateY(-10px); /* Yukarı kalk */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+}
+
+.card h3 {
+    font-size: 24px;
+    color: #b660c5; /* Kart başlıkları lila */
+    margin-bottom: 15px;
+    text-transform: uppercase;
+}
+
+.card p {
+    color: rgba(255, 255, 255, 0.8); /* Kart yazıları beyaz */
+    font-size: 16px;
+}
+
+.hero-small {
+    padding: 50px 20px;
+    text-align: center;
+    background: linear-gradient(to bottom, #410442, #2b1b31);
+}
+
+.game-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    padding: 40px 8%;
+}
+
+.game-card {
+    background: rgba(182, 96, 197, 0.1);
+    border:1px dashed #b660c5;
+    padding: 25px;
+    border-radius: 15px;
+    text-align: center;
+    transition: 0.4s;
+}
+.game-card:hover {
+    border-style: solid;
+    background: rgba(182, 96, 197, 0.2);
+    transform: scale(1.03);
+}
+
+.game-img {
+    font-size: 50px;
+    margin-bottom: 15px;
+}
+
+.download-btn {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 25px;
+    background-color: #7a0c5b; /* İndir butonu canlı bir renk olsun */
+    color: #2b1b31;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 10px;
+    transition: 0.3s;
+}
+.download-btn:hover {
+    background-color: #5b0751;
+    box-shadow: 0 0 15px #42012a;
+}
+
+.news-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    padding: 40px 8%;
+}
+
+.news-card {
+    background: rgba(182, 96, 197, 0.1);
+    border:1px dashed #b660c5;
+    padding: 25px;
+    border-radius: 15px;
+    text-align: center;
+    transition: 0.4s;
+}
+.news-card:hover {
+    border-style: solid;
+    background: rgba(182, 96, 197, 0.2);
+    transform: scale(1.03);
+}
+
+.news-img {
+    font-size: 50px;
+    margin-bottom: 15px;
+}
+/* ===========================================
+   KEŞFET (EXPLORE HUB) SAYFASI ÖZEL STİLLERİ
+   =========================================== */
+
+/* Sayfa Başlığı ve Açıklama Alanı */
+.explore-hub {
+    padding: 80px 5% 40px 5%;
+    text-align: center;
+    min-height: 80vh;
+}
+
+.explore-hub h2 {
+    font-size: 3rem;
+    color: #b660c5;
+    text-shadow: 0 0 15px rgba(182, 96, 197, 0.7);
+    margin-bottom: 10px;
+    letter-spacing: 3px;
+}
+
+/* Kartların Dizildiği Kutu */
+.hub-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    margin-top: 50px;
+    padding: 20px;
+}
+
+/* Ana Kart Tasarımı */
+.hub-card {
+    background: rgba(182, 96, 197, 0.05); /* Çok hafif şeffaf mor */
+    border: 1px solid rgba(182, 96, 197, 0.2);
+    padding: 40px 25px;
+    border-radius: 25px;
+    text-decoration: none;
+    color: white;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    backdrop-filter: blur(5px);
+}
+
+/* Fareyle Üzerine Gelince (Hover) */
+.hub-card:hover {
+    background: rgba(182, 96, 197, 0.15);
+    transform: translateY(-12px) scale(1.02);
+    border-color: #00ffcc; /* Turkuaz parlama */
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5), 0 0 20px rgba(0, 255, 204, 0.2);
+}
+
+/* İkonlar */
+.hub-icon {
+    font-size: 55px;
+    margin-bottom: 20px;
+    filter: drop-shadow(0 0 10px rgba(182, 96, 197, 0.5));
+}
+
+.hub-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 12px;
+    color: #fff;
+}
+
+.hub-card p {
+    font-size: 0.95rem;
+    color: #ccc;
+    line-height: 1.5;
+}
+
+/* Kilitli/Yakında Kartı Stili */
+.locked {
+    position: relative;
+    opacity: 0.5;
+    cursor: not-allowed;
+    border-style: dashed;
+}
+
+.locked:hover {
+    transform: none; /* Kilitli kart zıplamasın */
+    border-color: #ff0055;
+}
+
+.badge {
+    background: #ff0055;
+    color: white;
+    font-size: 11px;
+    font-weight: bold;
+    padding: 5px 12px;
+    border-radius: 50px;
+    margin-top: 15px;
+    text-transform: uppercase;
+    box-shadow: 0 0 10px rgba(255, 0, 85, 0.4);
+}

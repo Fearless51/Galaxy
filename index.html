@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>Kayıt Ol - Galaxy</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <form class="galaxy-form">
+        <h2>Kayıt Ol</h2>
+        <input type="text" id="k_ad" placeholder="Adınız">
+        <input type="email" id="k_email" placeholder="E-posta Adresi">
+        <input type="password" id="k_sifre" placeholder="Şifre Oluştur">
+        <input type="button" value="KAYIT OL" onclick="kayitOl()">
+        <p>Zaten üye misin? <a href="girisyap.html">Giriş Yap</a></p>
+    </form>
+
+    <script>
+        function kayitOl() {
+            const ad = document.getElementById('k_ad').value.trim();
+            const email = document.getElementById('k_email').value.trim();
+            const sifre = document.getElementById('k_sifre').value.trim();
+
+            if (ad === "" || email === "" || sifre === "") {
+                alert("Kral, tüm alanları doldurman lazım. Galaxy'de eksik istemiyoruz!");
+            } else if (sifre.length < 4) {
+                alert("Şifren çok kısa, en az 4 karakter yapalım.");
+            } else {
+                alert("Kayıt Başarılı! GALAXY'E ışınlanıyorsun " + ad);
+                window.location.href = "anasayfa.html";
+            }
+        }
+    </script>
+</body>
+</html>
